@@ -21,15 +21,15 @@ def solve(h, x, y, twobeta, twogama, yaw, pitch, roll):
     mx = torad(70)
     angle = alpha + gama
     #Считаеаем координаты трапеции
-    x1 = (x + math.tan(alpha - gama) * h) * math.cos(-phi) - (y - h / (math.cos(alpha - gama)) * math.tan(beta)) * math.sin(-phi)
-    y1 = (x + math.tan(alpha - gama) * h) * math.sin(-phi) + (y - h / (math.cos(alpha - gama)) * math.tan(beta)) * math.cos(-phi)
-    x2 = (x + math.tan(alpha - gama) * h) * math.cos(-phi) - (y + h / (math.cos(alpha - gama)) * math.tan(beta)) * math.sin(-phi)
-    y2 = (x + math.tan(alpha - gama) * h) * math.sin(-phi) + (y + h / (math.cos(alpha - gama)) * math.tan(beta)) * math.cos(-phi)
+    x1 = x + (math.tan(alpha - gama) * h) * math.cos(-phi) - (- h / (math.cos(alpha - gama)) * math.tan(beta)) * math.sin(-phi)
+    y1 = y + (math.tan(alpha - gama) * h) * math.sin(-phi) + (- h / (math.cos(alpha - gama)) * math.tan(beta)) * math.cos(-phi)
+    x2 = x + (math.tan(alpha - gama) * h) * math.cos(-phi) - (h / (math.cos(alpha - gama)) * math.tan(beta)) * math.sin(-phi)
+    y2 = y + (math.tan(alpha - gama) * h) * math.sin(-phi) + (h / (math.cos(alpha - gama)) * math.tan(beta)) * math.cos(-phi)
 
-    x3 = (x + math.tan(angle) * h) * math.cos(-phi) - (y - h / (math.cos(angle)) * math.tan(beta)) * math.sin(-phi)
-    y3 = (x + math.tan(angle) * h) * math.sin(-phi) + (y - h / (math.cos(angle)) * math.tan(beta)) * math.cos(-phi)
-    x4 = (x + math.tan(angle) * h) * math.cos(-phi) - (y + h / (math.cos(angle)) * math.tan(beta)) * math.sin(-phi)
-    y4 = (x + math.tan(angle) * h) * math.sin(-phi) + (y + h / (math.cos(angle)) * math.tan(beta)) * math.cos(-phi)
+    x3 = x + (math.tan(angle) * h) * math.cos(-phi) - (- h / (math.cos(angle)) * math.tan(beta)) * math.sin(-phi)
+    y3 = y + (math.tan(angle) * h) * math.sin(-phi) + (- h / (math.cos(angle)) * math.tan(beta)) * math.cos(-phi)
+    x4 = x + (math.tan(angle) * h) * math.cos(-phi) - (h / (math.cos(angle)) * math.tan(beta)) * math.sin(-phi)
+    y4 = y + (math.tan(angle) * h) * math.sin(-phi) + (h / (math.cos(angle)) * math.tan(beta)) * math.cos(-phi)
 
     #print(alpha, beta, gama, phi, sep = " ")
     #Вывод вершин трапеции в порядке обхода
@@ -38,14 +38,12 @@ def solve(h, x, y, twobeta, twogama, yaw, pitch, roll):
     print(x4, y4, sep = " ")
     print(x3, y3, sep = " ")
 
-
-pitch = int(input()) #Угол наклона дрона относительно вертикальной линии против часовой стрелки
-twobeta = int(input());#Градусный диапазон по горизонтали который видит дрон
-twogama = int(input());#Градусный дипазон по вертикали который видит дрон
-h = int(input());#высота надо объектом
-yaw = int(input());#угол поворота дрона относительно прямоугольный координат против часовой стрелки
-x = int(input());#х координата дрона
-y = int(input());#у координата дрона
+h = float(input());#высота надо объектом
+x = float(input());#х координата дрона
+y = float(input());#у координата дрона
+twobeta = 70
+twogama = 90
+yaw = float(input());#угол поворота дрона относительно прямоугольный координат против часовой стрелки
+pitch = float(input()) #Угол наклона дрона относительно вертикальной линии против часовой стрелки
 roll = 0
 solve(h, x, y, twobeta, twogama, yaw, pitch, roll)
-
